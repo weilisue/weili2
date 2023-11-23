@@ -1,0 +1,8 @@
+name: WF1
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: first step
+        run: echo "hello from job1 - push"
