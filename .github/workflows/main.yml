@@ -1,10 +1,14 @@
 name: WF1
-on: push
+on: 
+  push:
+    branches:
+      - main
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: first step
         run: echo "hello from job1 - push"
-      - name: Second step
-        run: echo "step2"
+      - name: 2nd step
+        run: echo "hello from step2"
