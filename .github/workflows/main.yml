@@ -6,3 +6,5 @@ jobs:
     steps:
       - name: first step
         run: echo "hello from job1 - push"
+      - name: Second step
+        run: echo "step2"
