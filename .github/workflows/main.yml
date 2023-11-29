@@ -17,6 +17,7 @@ jobs:
         run: cat /etc/os-release
       - name: sleep for 60 secs
         run: sleep 60
+        if: github.event_name == 'push'
       - name: multiline run
         run: |
           echo running a multiline step
