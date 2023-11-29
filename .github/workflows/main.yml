@@ -5,15 +5,21 @@ on:
       - main
 
 jobs:
-  job1:
+  build-job:
     runs-on: ubuntu-latest
     steps:
-      - name: job1 first step
-        run: echo "hello from job1"
-      - name: job1 2nd step
-        run: cat /etc/os-release
-      - name: job1 get hostname
+      - name: first step
         run: hostname
+      - name: get OS
+        run: cat /etc/os-release
+      - name: sleep for 60 secs
+        run: sleep 60
+      - name: multiline run
+        run: |
+          echo running a multiline step
+          echo mkdir weili
+          echo cd weili
+          echo touch file1
 
   job2:
     runs-on: ubuntu-latest
@@ -24,3 +30,7 @@ jobs:
         run: cat /etc/os-release
       - name: job2 get hostname
         run: hostname
+      - name: sleep for 60 secs
+        run: sleep 60
+      - name: test
+        run: echo job2 completed
