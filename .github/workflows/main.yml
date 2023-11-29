@@ -39,8 +39,10 @@ jobs:
   job2:
     runs-on: ubuntu-latest
     steps:
-      - name: job2 first step
-        run: echo "Today is $var1"
+      - name: print output
+        run: |
+          echo "Today is $var1"
+          echo "First name is $first_name. Last name is $last_name"
       - name: job2 2nd step
         run: cat /etc/os-release
       - name: job2 get hostname
