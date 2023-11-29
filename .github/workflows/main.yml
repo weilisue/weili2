@@ -6,21 +6,32 @@ on:
   push:
     branches:
       - main
+env: 
+  var1: Wednesday
+  
 
 jobs:
   build-job:
     runs-on: ubuntu-latest
+    env: 
+      last_name: Sue
     steps:
       - name: first step
         run: hostname
       - name: get OS
         run: cat /etc/os-release
-      - name: sleep for 60 secs
-        run: sleep 60
+      - name: sleep for 5 secs
+        run: sleep 5
         if: github.event_name == 'push'
+      - name: test var
+        run: echo "First name is $first_name. Last name is $last_name"
+        env:
+          first_name: Weili
       - name: multiline run
         run: |
           echo running a multiline step
+          echo "First name is $first_name. Last name is $last_name"
+          echo Today is $var1
           echo mkdir weili
           echo cd weili
           echo touch file1
@@ -29,12 +40,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: job2 first step
-        run: echo "hello from job2"
+        run: echo "Today is $var1"
       - name: job2 2nd step
         run: cat /etc/os-release
       - name: job2 get hostname
         run: hostname
-      - name: sleep for 60 secs
-        run: sleep 60
+      - name: sleep for 10 secs
+        run: sleep 10
       - name: test
         run: echo job2 completed
