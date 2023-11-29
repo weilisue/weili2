@@ -2,6 +2,7 @@ name: WF1
 on: 
   schedule:
   - cron: "30,35 * * * *"
+  workflow_dispatch:
   push:
     branches:
       - main
