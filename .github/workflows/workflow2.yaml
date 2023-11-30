@@ -1,13 +1,28 @@
+name: WF2
 on:
   push:
     branches:
       - main
+env:
+  name: Weili
 
 jobs:
   ubuntu_hello:
     runs-on: ubuntu-latest
+    env:
+      name: Sue
     steps:
+      - run: |
+          echo "Hello from $name"
+        env:
+          name: WL
       - run: echo "Hello World from Ubuntu Runner!!"
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event"
       - run: echo "🐣 This job is now running on ${{ runner.os }} server hosted by Github!"
       - run: echo "Github repository URL is ${{ github.repositoryUrl }} and branch is ${{ github.ref_name }}"
+      - run: echo "Hello from $name"
+
+  job2:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Hello from $name"
