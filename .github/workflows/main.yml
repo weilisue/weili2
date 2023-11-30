@@ -11,7 +11,7 @@ env:
   
 
 jobs:
-  build-job:
+  build:
     runs-on: ubuntu-latest
     env: 
       last_name: Sue
@@ -38,8 +38,26 @@ jobs:
           echo cd weili
           echo touch file1
 
-  job2:
+  test:
     runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: print output
+        run: |
+          echo "Today is $var1"
+          echo "First name is $first_name. Last name is $last_name"
+      - name: job2 2nd step
+        run: cat /etc/os-release
+      - name: job2 get hostname
+        run: hostname
+      - name: sleep for 10 secs
+        run: sleep 10
+      - name: test
+        run: echo job2 completed
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: test
     steps:
       - name: print output
         run: |
