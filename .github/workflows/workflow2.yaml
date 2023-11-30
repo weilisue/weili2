@@ -13,7 +13,7 @@ jobs:
       name: Sue
     steps:
       - run: |
-          echo "Hello from $name"
+          echo "Hello from $name ${{ vars.last_name }}"
         env:
           name: WL
       - run: echo "Hello World from Ubuntu Runner!!"
