@@ -15,6 +15,7 @@ jobs:
     steps:
       - run: |
           echo "Hello from $name ${{ vars.last_name }}. Welcome to ${{ vars.db_server }}!!"
+          echo "Repo Password is ${{ secrets.REPO_PASSWORD }} and DB Password is ${{ secrets.DB_PASSWORD }}"
         env:
           name: WL
       - run: echo "Hello World from Ubuntu Runner!!"
@@ -28,3 +29,4 @@ jobs:
     environment: prod
     steps:
       - run: echo "Hello from $name . Welcome to ${{ vars.db_server }}!!"
+      - run: echo "Repo Password is ${{ secrets.REPO_PASSWORD }} and DB Password is ${{ secrets.DB_PASSWORD }}"
