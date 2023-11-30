@@ -18,8 +18,10 @@ jobs:
     steps:
       - name: first step
         run: hostname
+        if: runner.os == 'Windows'
       - name: get OS
         run: cat /etc/os-release
+        if: runner.os != 'Windows'
       - name: sleep for 5 secs
         run: sleep 5
         if: github.event_name == 'push'
