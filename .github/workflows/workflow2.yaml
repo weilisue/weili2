@@ -9,11 +9,12 @@ env:
 jobs:
   ubuntu_hello:
     runs-on: ubuntu-latest
+    environment: dev
     env:
       name: Sue
     steps:
       - run: |
-          echo "Hello from $name ${{ vars.last_name }}"
+          echo "Hello from $name ${{ vars.last_name }}. Welcome to ${{ vars.db_server }}!!"
         env:
           name: WL
       - run: echo "Hello World from Ubuntu Runner!!"
@@ -24,5 +25,6 @@ jobs:
 
   job2:
     runs-on: ubuntu-latest
+    environment: prod
     steps:
-      - run: echo "Hello from $name"
+      - run: echo "Hello from $name . Welcome to ${{ vars.db_server }}!!"
