@@ -42,7 +42,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     needs: build
-    continue-on-error: true
+    # continue-on-error: true
     steps:
       - name: print output
         run: |
@@ -60,6 +60,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: test
+    if: ${{ always () }}
     steps:
       - name: print output
         run: |
