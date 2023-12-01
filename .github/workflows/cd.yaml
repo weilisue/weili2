@@ -7,11 +7,21 @@ on:
 
 jobs:
   deploy:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - name: Run Playbook
         run: sudo ansible-playbook -vv web.yaml
+      - name: uninstall aws
+        run: yum uninstall awscli aws-cli -y
+      - name: download aws
+        run: curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+      - name: unzip aws
+        run: unzip awscliv2.zip
+      - name: install aws
+        run: sudo ./aws/install
+      - name: aws
+        run: ln -s /usr/local/bin/aws /usr/bin/aws
       - name: eks
         run: curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
       - name: install eks
