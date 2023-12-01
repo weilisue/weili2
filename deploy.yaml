@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: weili-app-deployment
+  labels:
+    app: wlapp
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: wlapp
+  template:
+    metadata:
+      labels:
+        app: wlapp
+    spec:
+      containers:
+      - name: wlcontainer
+        image: docker push weilisue/intel:v1
+        ports:
+        - containerPort: 80
