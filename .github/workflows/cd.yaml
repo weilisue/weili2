@@ -7,13 +7,8 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
-      - name: install ansible
-        run: |
-          yum update -y
-          yum install epel-release
-          yum install ansible
       - uses: actions/checkout@v3
       - name: Run Playbook
         run: sudo ansible-playbook -vv web.yaml
