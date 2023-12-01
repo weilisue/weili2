@@ -9,6 +9,11 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+      - name: install ansible
+        run: |
+          yum update -y
+          yum install epel-release
+          yum install ansible
       - uses: actions/checkout@v3
       - name: Run Playbook
         run: sudo ansible-playbook -vv web.yaml
