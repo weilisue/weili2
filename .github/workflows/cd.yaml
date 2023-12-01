@@ -11,4 +11,4 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Run Playbook
-        run: sudo ansible-playbook -v web.yaml
+        run: sudo ansible-playbook -vv web.yaml
